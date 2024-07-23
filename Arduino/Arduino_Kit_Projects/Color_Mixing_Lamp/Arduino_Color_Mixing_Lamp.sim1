@@ -10,8 +10,6 @@
 
 <item itemtype="LedRgb" CircId="LedRgb-18" mainComp="false" Show_id="false" Show_Val="false" Pos="-256,56" rotation="0" hflip="-1" vflip="1" label="LedRgb-18" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" CommonCathode="true" Threshold_R="2.4 V" MaxCurrent_R="30 mA" Resistance_R="0.6 Ω" Threshold_G="3.5 V" MaxCurrent_G="30 mA" Resistance_G="0.6 Ω" Threshold_B="3.5 V" MaxCurrent_B="30 mA" Resistance_B="0.6 Ω" />
 
-<item itemtype="LDR" CircId="LDR-19" mainComp="false" Show_id="true" Show_Val="false" Pos="84,-188" rotation="-90" hflip="1" vflip="1" label="Photo_B" idLabPos="-16,-24" labelrot="0" valLabPos="-16,30" valLabRot="0" Lux="16.368 Lux" Min_Lux="1e-12 Lux" Max_Lux="1023 Lux" Dial_Step="1 µLux" Gamma="0.8582" R1="127410 Ω" Slider="false" Scale="1" />
-
 <item itemtype="LDR" CircId="LDR-20" mainComp="false" Show_id="true" Show_Val="false" Pos="148,-188" rotation="-90" hflip="1" vflip="1" label="Photo_G" idLabPos="-16,-24" labelrot="0" valLabPos="-16,30" valLabRot="0" Lux="1e-12 Lux" Min_Lux="1e-12 Lux" Max_Lux="1023 Lux" Dial_Step="0 Lux" Gamma="0.8582" R1="127410 Ω" Slider="false" Scale="1" />
 
 <item itemtype="LDR" CircId="LDR-21" mainComp="false" Show_id="true" Show_Val="false" Pos="228,-188" rotation="-90" hflip="1" vflip="1" label="Photo_R" idLabPos="-16,-24" labelrot="0" valLabPos="-16,30" valLabRot="0" Lux="1e-12 Lux" Min_Lux="1e-12 Lux" Max_Lux="1023 Lux" Dial_Step="0 Lux" Gamma="0.8582" R1="127410 Ω" Slider="false" Scale="1" />
@@ -28,13 +26,11 @@
 
 <item itemtype="Probe" CircId="Probe-40" mainComp="false" Show_id="false" Show_Val="true" Pos="0,-80" rotation="-45" hflip="1" vflip="1" label="Probe-40" idLabPos="16,-16" labelrot="45" valLabPos="16,0" valLabRot="45" ShowVolt="true" Threshold="2.5 V" />
 
+<item itemtype="LDR" CircId="LDR-46" mainComp="false" Show_id="false" Show_Val="false" Pos="84,-188" rotation="-90" hflip="1" vflip="1" label="Photo_B" idLabPos="-16,-24" labelrot="0" valLabPos="-16,30" valLabRot="0" Lux="1 Lux" Min_Lux="0 Lux" Max_Lux="1000 Lux" Dial_Step="0 Lux" Gamma="0.8582" R1="127410 Ω" Slider="false" Scale="1" />
+
 <item itemtype="Node" CircId="Node-11" mainComp="false" Pos="148,-68" />
 
 <item itemtype="Node" CircId="Node-25" mainComp="false" Pos="148,-156" />
-
-<item itemtype="Node" CircId="Node-27" mainComp="false" Pos="84,-156" />
-
-<item itemtype="Node" CircId="Node-28" mainComp="false" Pos="148,-220" />
 
 <item itemtype="Node" CircId="Node-29" mainComp="false" Pos="228,-220" />
 
@@ -48,6 +44,10 @@
 
 <item itemtype="Node" CircId="Node-41" mainComp="false" Pos="116,-52" />
 
+<item itemtype="Node" CircId="Node-47" mainComp="false" Pos="84,-156" />
+
+<item itemtype="Node" CircId="Node-48" mainComp="false" Pos="148,-220" />
+
 <item itemtype="Connector" uid="Connector-8" startpinid="Resistor-9-rPin" endpinid="Node-11-0" pointList="148,-92,148,-68" />
 
 <item itemtype="Connector" uid="Connector-24" startpinid="Node-11-2" endpinid="Resistor-7-rPin" pointList="148,-68,84,-68,84,-92" />
@@ -56,19 +56,9 @@
 
 <item itemtype="Connector" uid="Connector-59" startpinid="Node-25-2" endpinid="LDR-20-lPin" pointList="148,-156,148,-172" />
 
-<item itemtype="Connector" uid="Connector-63" startpinid="LDR-19-lPin" endpinid="Node-27-1" pointList="84,-172,84,-156" />
-
-<item itemtype="Connector" uid="Connector-65" startpinid="Node-27-2" endpinid="Resistor-7-lPin" pointList="84,-156,84,-124" />
-
-<item itemtype="Connector" uid="Connector-67" startpinid="Node-28-1" endpinid="LDR-20-rPin" pointList="148,-220,148,-204" />
-
-<item itemtype="Connector" uid="Connector-69" startpinid="Node-28-2" endpinid="LDR-19-rPin" pointList="148,-220,84,-220,84,-204" />
-
 <item itemtype="Connector" uid="Connector-70" startpinid="Node-29-1" endpinid="LDR-21-rPin" pointList="228,-220,228,-204" />
 
 <item itemtype="Connector" uid="Connector-71" startpinid="Uno-1-5V0" endpinid="Node-29-0" pointList="40,48,276,48,276,-220,228,-220" />
-
-<item itemtype="Connector" uid="Connector-72" startpinid="Node-29-2" endpinid="Node-28-0" pointList="228,-220,148,-220" />
 
 <item itemtype="Connector" uid="Connector-74" startpinid="Uno-1-10" endpinid="Resistor-31-rPin" pointList="-104,56,-148,56" />
 
@@ -102,12 +92,22 @@
 
 <item itemtype="Connector" uid="Connector-96" startpinid="Uno-1-A2" endpinid="Node-39-0" pointList="40,-8,60,-8,60,-104" />
 
-<item itemtype="Connector" uid="Connector-97" startpinid="Node-39-2" endpinid="Node-27-0" pointList="60,-104,60,-156,84,-156" />
-
 <item itemtype="Connector" uid="Connector-98" startpinid="Probe-40-inpin" endpinid="Node-41-1" pointList="-16,-64,-16,-52,116,-52" />
 
 <item itemtype="Connector" uid="Connector-99" startpinid="Node-25-1" endpinid="Node-41-0" pointList="148,-156,116,-156,116,-52" />
 
 <item itemtype="Connector" uid="Connector-100" startpinid="Node-41-2" endpinid="Uno-1-A1" pointList="116,-52,116,0,40,0" />
+
+<item itemtype="Connector" uid="Connector-111" startpinid="Node-47-1" endpinid="LDR-46-lPin" pointList="84,-156,84,-172" />
+
+<item itemtype="Connector" uid="Connector-112" startpinid="Node-39-2" endpinid="Node-47-0" pointList="60,-104,60,-156,84,-156" />
+
+<item itemtype="Connector" uid="Connector-113" startpinid="Node-47-2" endpinid="Resistor-7-lPin" pointList="84,-156,84,-124" />
+
+<item itemtype="Connector" uid="Connector-114" startpinid="LDR-46-rPin" endpinid="Node-48-1" pointList="84,-204,84,-220,148,-220" />
+
+<item itemtype="Connector" uid="Connector-115" startpinid="Node-29-2" endpinid="Node-48-0" pointList="228,-220,148,-220" />
+
+<item itemtype="Connector" uid="Connector-116" startpinid="Node-48-2" endpinid="LDR-20-rPin" pointList="148,-220,148,-204" />
 
 </circuit>
