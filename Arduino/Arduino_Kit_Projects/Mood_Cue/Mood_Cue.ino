@@ -24,7 +24,7 @@ void loop() {
 
 	potValue = analogRead(potPin);
 	Serial.print("Pot value: ");
-	Serial.print(potVal);
+	Serial.print(potValue);
 	
 	// Servo range of motion is 180 degrees, so must map potValue from
 	// voltage to angle
