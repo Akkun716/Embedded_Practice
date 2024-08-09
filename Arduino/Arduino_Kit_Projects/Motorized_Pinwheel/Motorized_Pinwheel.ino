@@ -1,5 +1,6 @@
 /**
- * The program toggles a DC motor with a push-button
+ * The program activates a DC motor with a push-button. Hold down to power
+ * the motor, release to turn it off.
  */
 
 const int switchPin = 2;
