@@ -35,6 +35,7 @@ const int redLED = 9;
 // Set speeds for LED blinks
 const int FAST_BLINK = 50;
 const int MED_BLINK = 250;
+const HOLD_DURATION = 1000;
 const int PASSWORD_LEN = 4;
 char password[PASSWORD_LEN];
 char userEntry[PASSWORD_LEN];
@@ -56,14 +57,21 @@ void loop() {
 	if(!locked) {
 		int switchVal = digitalRead(switchPin);
 		if(switchVal == HIGH) {
-			// If switch is engaged, power redLED and set
-			// servo to "locked" position
-			locked = true;
-			digitalWrite(greenLED, LOW);
-			digitalWrite(redLED, HIGH);
-			mainServo.write(90);
-			Serial.print("Servo: locked");
-			delay(10);
+		// If the switch is engaged...
+			if(buttonHold()){
+				// If the switch is held for a duration of time, the
+				// keypad code can be reset to a new set of chars
+				setPassword();
+			} else {
+				// If switch is pressed and released, power redLED and
+				// set servo to "locked" position
+				locked = true;
+				digitalWrite(greenLED, LOW);
+				digitalWrite(redLED, HIGH);
+				mainServo.write(90);
+				Serial.print("Servo: locked");
+				delay(10);
+			}
 		}
 	}
 	if(locked) {
@@ -179,4 +187,18 @@ void setPassword() {
 	digitalWrite(greenLED, HIGH);
 	mainServo.write(0);
 	Serial.println("Servo: unlocked");
+}
+
+/**
+ * Records if the button has been held a specific duration of time.
+ **/
+bool buttonHold() {
+	int duration = 0;
+	int switchVal = HIGH;
+	while((switchVal == HIGH) && duration != RESET_DURATION) {
+		duration += 1;
+		delay(1);
+		switchVal = digitalRead(switchPin);
+	}
+	return duration == RESET_DURATION;
 }
