@@ -35,7 +35,7 @@ const int redLED = 9;
 // Set speeds for LED blinks
 const int FAST_BLINK = 50;
 const int MED_BLINK = 250;
-const HOLD_DURATION = 1000;
+const int HOLD_DURATION = 1000;
 const int PASSWORD_LEN = 4;
 char password[PASSWORD_LEN];
 char userEntry[PASSWORD_LEN];
@@ -55,13 +55,14 @@ void setup() {
 
 void loop() {
 	if(!locked) {
+		// If servo is "locked," check for a switch press
 		int switchVal = digitalRead(switchPin);
 		if(switchVal == HIGH) {
-		// If the switch is engaged...
 			if(buttonHold()){
 				// If the switch is held for a duration of time, the
 				// keypad code can be reset to a new set of chars
 				setPassword();
+				
 			} else {
 				// If switch is pressed and released, power redLED and
 				// set servo to "locked" position
@@ -75,13 +76,15 @@ void loop() {
 		}
 	}
 	if(locked) {
-		// Wait for user entry and then check that password
+		// If the servo is "unlocked," wait for user entry and then
+		// compare that to the password
 		led[0] = yellowLED;
 		userKeypadEntry(led, 1, false);
 		if(!checkKeyEntry(userEntry, password)) {
 			led[0] = redLED;
 			flashLEDs(led, 1, 2, MED_BLINK, true);
 			Serial.println("Incorrect key entry");
+			
 		} else {
 			locked = false;
 			digitalWrite(redLED, LOW);
@@ -109,6 +112,7 @@ void userKeypadEntry(int leds[], int arrLength, bool endHigh) {
 		while(keyPress == NO_KEY) {
 			keyPress = mainKeypad.getKey();
 		}
+		
 		userEntry[i] = keyPress;
 		// LEDs indicate a key press was accepted
 		flashLEDs(leds, arrLength, 1, FAST_BLINK, endHigh);
@@ -147,8 +151,8 @@ void flashLEDs(int leds[], int arrLength, int count, int blinkSpeed, bool endHig
 		for(int i = 0; i < arrLength; i++) {
 			digitalWrite(leds[i], HIGH);
 		}
-		delay(blinkSpeed);
 		
+		delay(blinkSpeed);
 		if(count == 1 && endHigh) {
 			break;	
 		} 
@@ -156,8 +160,8 @@ void flashLEDs(int leds[], int arrLength, int count, int blinkSpeed, bool endHig
 		for(int i = 0; i < arrLength; i++) {
 			digitalWrite(leds[i], LOW);
 		}
-		delay(blinkSpeed);
 		
+		delay(blinkSpeed);
 		count--;
 	}
 }
@@ -195,10 +199,10 @@ void setPassword() {
 bool buttonHold() {
 	int duration = 0;
 	int switchVal = HIGH;
-	while((switchVal == HIGH) && duration != RESET_DURATION) {
+	while((switchVal == HIGH) && duration != HOLD_DURATION) {
 		duration += 1;
 		delay(1);
 		switchVal = digitalRead(switchPin);
 	}
-	return duration == RESET_DURATION;
+	return duration == HOLD_DURATION;
 }
